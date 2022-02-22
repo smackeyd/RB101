@@ -79,9 +79,9 @@ def update_score(score, player, comp)
 end
 
 def display_winner(scores)
-  if scores[:player] == 5
+  if scores[:player] == PTS_TO_WIN
     prompt("You are the winner!")
-  elsif scores[:computer] == 5
+  elsif scores[:computer] == PTS_TO_WIN
     prompt("The computer wins!")
   end
 end
