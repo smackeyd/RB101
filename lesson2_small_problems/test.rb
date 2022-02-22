@@ -1,17 +1,11 @@
-def operation_to_message(op)
-  word = case op
-         when '1'
-           'Adding'
-         when '2'
-           'Subtracting'
-         when '3'
-           'Multiplying'
-         when '4'
-           'Dividing'
-         end
-         
-  puts "Let's do this!"
-  word
-end
+def get_choice(play_choice)
+  loop do
+    # puts player_prompt
+    play_choice = gets.chomp.downcase
+    # break if valid_choice?(play_choice)
+    # prompt("Please enter a valid choice:")
+  end
+  play_choice
+end 
 
-p operation_to_message(word)
+p get_choice('paper')
