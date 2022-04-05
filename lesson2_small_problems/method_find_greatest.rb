@@ -24,4 +24,4 @@ def find_greatest(numbers)
   saved_number # returning the SAVED value 
 end
 
-puts find_greatest([1, 2, 3, 10, 7, 8, 0, 67])
+puts find_greatest([1, 2, 3, 100, 7, 8, 0, 67])

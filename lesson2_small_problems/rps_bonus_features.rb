@@ -46,18 +46,19 @@ def get_choice(player_choice)
 end
 
 def alt_choice_to_valid(choice)
-  case choice
-  when 'r'
-    'rock'
-  when 'p'
-    'paper'
-  when 'sc'
-    'scissors'
-  when 'l'
-    'lizard'
-  when 'sp'
-    'spock'
-  end
+  valid_choice = case choice
+                 when 'r'
+                   'rock'
+                 when 'p'
+                   'paper'
+                 when 'sc'
+                   'scissors'
+                 when 'l'
+                   'lizard'
+                 when 'sp'
+                   'spock'
+                 end
+  valid_choice
 end
 
 def display_results(player, comp)

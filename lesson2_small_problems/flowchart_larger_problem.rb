@@ -26,7 +26,7 @@ keep_going = true
 
 while keep_going == true
   Kernel.puts("Please enter a collection of numbers:")
-  collection = gets.chomp.to_s.split(" ")
+  collection = gets.chomp.split(" ")
   num = find_greatest(collection.map!{ |n| n.to_i })
   large_numbers.push(num)
   p large_numbers

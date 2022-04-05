@@ -13,6 +13,6 @@ def model(new_car)
 end
 
 make, model = car("Ford Mustang")
-make == "Ford"         # => true
-model.start_with?("M") # => NoMethodError: undefined method `start_with?' for nil:NilClass
+p make == "Ford"         # => true
+p model.start_with?("M") # => NoMethodError: undefined method `start_with?' for nil:NilClass
 
