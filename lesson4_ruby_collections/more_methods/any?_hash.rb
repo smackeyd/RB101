@@ -1,4 +1,4 @@
-{ a: "ant", b: "bear", c: "cat" }.each_with_object([]) do |pair, array|
-  array << pair.last
+{ a: "ant", b: "bear", c: "cat" }.any? do |key, value|
+  value.size > 4
 end
-# => ["ant", "bear", "cat"]
+# => false
