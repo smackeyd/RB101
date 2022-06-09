@@ -150,7 +150,9 @@ end
 
 def computer_marks_square!(brd)
   square = nil
-  if computer_defense(brd)
+  if computer_defense(brd) && computer_offense(brd)
+    square = computer_offense(brd)
+  elsif computer_defense(brd)
     square = computer_defense(brd)
   elsif computer_offense(brd)
     square = computer_offense(brd)
