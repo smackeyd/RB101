@@ -1,0 +1,1 @@
+p (1..4).each_with_object([]) {|i, a| a.push(i**2) } # => [1, 4, 9, 16]
