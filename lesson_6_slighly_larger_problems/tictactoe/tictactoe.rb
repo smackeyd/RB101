@@ -148,7 +148,7 @@ def find_at_risk_square(line, board, marker)
   end
 end
 
-def computer_marks_square!(brd)
+def computer_strategy(brd)
   square = nil
   if computer_defense(brd) && computer_offense(brd)
     square = computer_offense(brd)
@@ -157,6 +157,11 @@ def computer_marks_square!(brd)
   elsif computer_offense(brd)
     square = computer_offense(brd)
   end
+  square
+end
+
+def computer_marks_square!(brd)
+  square = computer_strategy(brd)
 
   if !square
     square = empty_squares(brd).include?(5) ? 5 : empty_squares(brd).sample
