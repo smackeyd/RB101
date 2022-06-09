@@ -181,9 +181,9 @@ end
 def detect_winner(brd)
   WINNING_LINES.each do |line|
     if brd.values_at(*line).count(PLAYER_MARKER) == 3
-      return 'Player'
+      return PLAYER_NAMES[0]
     elsif brd.values_at(*line).count(COMPUTER_MARKER) == 3
-      return 'Computer'
+      return PLAYER_NAMES[1]
     end
   end
   nil
@@ -191,7 +191,7 @@ end
 
 def display_winner_or_tie(brd)
   if someone_won?(brd)
-    prompt("#{detect_winner(brd)} won!")
+    prompt("#{detect_winner(brd)} won this round!")
   else
     prompt("It's a tie!")
   end
@@ -213,15 +213,15 @@ def play_again?
 end
 
 def display_score(score)
-  prompt "Player score is: #{score[:player]}."
-  prompt "Computer score is: #{score[:computer]}."
+  prompt "#{PLAYER_NAMES[0]} score is: #{score[:player]}."
+  prompt "#{PLAYER_NAMES[1]} score is: #{score[:computer]}."
   sleep(1)
 end
 
 def update_scores(scr, brd)
-  if detect_winner(brd) == 'Player'
+  if detect_winner(brd) == PLAYER_NAMES[0]
     scr[:player] += 1
-  elsif detect_winner(brd) == 'Computer'
+  elsif detect_winner(brd) == PLAYER_NAMES[1]
     scr[:computer] += 1
   else
     scr
