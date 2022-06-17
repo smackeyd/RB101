@@ -96,7 +96,7 @@ def player_decision
   answer = ''
   loop do
     prompt "Please choose: hit or stay"
-    answer = gets.chomp
+    answer = gets.chomp.downcase
     break if valid_choice_hit?(answer) || valid_choice_stay?(answer)
     prompt "Invalid choice!"
   end
