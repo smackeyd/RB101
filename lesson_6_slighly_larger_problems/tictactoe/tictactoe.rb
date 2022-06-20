@@ -1,3 +1,4 @@
+require 'pry'
 INITIAL_MARKER = ' '
 PLAYER_MARKER = 'X'
 COMPUTER_MARKER = 'O'
@@ -12,7 +13,7 @@ def prompt(msg)
 end
 
 def welcome_message
-  prompt "Welcome to TicTacToe! Best out of 5 wins!"
+  prompt "Welcome to TicTacToe! Best out of #{PTS_TO_WIN} wins!"
 end
 
 def joinor(arr, delimiter=', ', word='or')
@@ -62,12 +63,10 @@ end
 
 def random_first_turn
   first = PLAYER_NAMES.sample
-  display_first_turn(first)
   first
 end
 
 def choosing_first_turn
-  first = ''
   answer = ''
   loop do
     prompt "Would you like to decide on who goes first? (Y or N)"
@@ -76,9 +75,11 @@ def choosing_first_turn
     prompt "Invalid choice. Please enter Y or N."
   end
 
-  first = player_choose_first_turn if answer == 'y'
-  first = random_first_turn if answer == 'n'
-  first
+  if answer == 'y'
+    player_choose_first_turn
+  else
+    random_first_turn
+  end
 end
 
 def player_choose_first_turn
@@ -99,6 +100,7 @@ def display_first_turn(player)
   else
     prompt("Computer goes first!")
   end
+  player
 end
 
 def place_piece!(board, current_player)
@@ -124,49 +126,38 @@ def player_marks_square!(brd)
   brd[square] = PLAYER_MARKER
 end
 
-def computer_defense(brd)
-  square = nil
-  WINNING_LINES.each do |line|
-    square = find_at_risk_square(line, brd, PLAYER_MARKER)
-    break if square
-  end
-  square
-end
-
-def computer_offense(brd)
-  square = nil
-  WINNING_LINES.each do |line|
-    square = find_at_risk_square(line, brd, COMPUTER_MARKER)
-    break if square
-  end
-  square
-end
-
 def find_at_risk_square(line, board, marker)
   if board.values_at(*line).count(marker) == 2
     board.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
   end
 end
 
+def cpu_off_or_def(brd, marker)
+  square = nil
+  WINNING_LINES.each do |line|
+    square = find_at_risk_square(line, brd, marker)
+    break if square
+  end
+  square
+end
+
 def computer_strategy(brd)
   square = nil
-  if computer_defense(brd) && computer_offense(brd)
-    square = computer_offense(brd)
-  elsif computer_defense(brd)
-    square = computer_defense(brd)
-  elsif computer_offense(brd)
-    square = computer_offense(brd)
+  if cpu_off_or_def(brd, PLAYER_MARKER) && cpu_off_or_def(brd, COMPUTER_MARKER)
+    square = cpu_off_or_def(brd, COMPUTER_MARKER)
+  elsif cpu_off_or_def(brd, PLAYER_MARKER)
+    square = cpu_off_or_def(brd, PLAYER_MARKER)
+  elsif cpu_off_or_def(brd, COMPUTER_MARKER)
+    square = cpu_off_or_def(brd, COMPUTER_MARKER)
   end
   square
 end
 
 def computer_marks_square!(brd)
   square = computer_strategy(brd)
-
   if !square
     square = empty_squares(brd).include?(5) ? 5 : empty_squares(brd).sample
   end
-
   brd[square] = COMPUTER_MARKER
 end
 

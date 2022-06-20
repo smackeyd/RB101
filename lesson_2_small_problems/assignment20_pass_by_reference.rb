@@ -6,4 +6,4 @@ name = "jim"
 cap(name)
 puts name           # => Jim
 
-# will NOT work if we used capitalize without b!
+# will NOT work if we used capitalize without !

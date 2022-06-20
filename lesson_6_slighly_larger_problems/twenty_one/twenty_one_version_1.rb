@@ -23,7 +23,7 @@ def welcome_message
   sleep(1)
   prompt "Welcome to Twenty-One!"
   sleep(1)
-  prompt "Best out of 3 wins!!!"
+  prompt "Best out of #{PTS_TO_WIN} wins!!!"
   sleep(2)
 end
 
@@ -95,7 +95,7 @@ end
 def player_decision
   answer = ''
   loop do
-    prompt "Please choose: hit or stay"
+    prompt "Please choose: (h)it or (st)ay"
     answer = gets.chomp.downcase
     break if valid_choice_hit?(answer) || valid_choice_stay?(answer)
     prompt "Invalid choice!"
@@ -196,6 +196,8 @@ end
 
 def display_score(score)
   system 'clear'
+  prompt "Best out of #{PTS_TO_WIN} wins!"
+  sleep(1)
   prompt "#{PLAYER}'s score is: #{score[:player]}."
   sleep(1)
   prompt "#{DEALER}'s score is: #{score[:dealer]}."

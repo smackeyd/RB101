@@ -1,30 +1,44 @@
-PLAYER_NAMES = ['Player', 'Computer']
-
-def prompt(msg)
-  puts "=> #{msg}"
+def computer_defense(brd)
+  square = nil
+  WINNING_LINES.each do |line|
+    square = find_at_risk_square(line, brd, PLAYER_MARKER)
+    break if square
+  end
+  square
 end
 
-def who_goes_first?
-  first = ''
-  loop do
-    prompt "Please choose who will go first (#{PLAYER_NAMES[0]} or #{PLAYER_NAMES[1]}):"
-    first = gets.chomp
-    break if first == PLAYER_NAMES[0] || first == PLAYER_NAMES[1]
-    prompt "Please enter a valid answer." 
+def computer_offense(brd)
+  square = nil
+  WINNING_LINES.each do |line|
+    square = find_at_risk_square(line, brd, COMPUTER_MARKER)
+    break if square
   end
-  first
+  square
 end
 
-p who_goes_first?
-
-def choosing_first_turn
-  first = ''
-  loop do
-    prompt "Would you like to decide on who goes first? (Y or N)"
-    answer = gets.chomp.downcase
-    answer.start_with?('y') ? first = who_goes_first? : first = random_first_turn
-    break if answer == 'Y' || answer == 'N'
-    prompt "Invalid choice. Please enter Y or N."
+def cpu_off_or_def(brd, marker)
+  square = nil
+  WINNING_LINES.each do |line|
+    square = find_at_risk_square(line, brd, marker)
+    break if square
   end
-  first 
+  square
+end
+
+def computer_strategy(brd)
+  square = nil
+  if cpu_off_or_def(brd, PLAYER_MARKER) && cpu_off_or_def(brd, COMPUTER_MARKER)
+    square = cpu_off_or_def(brd, COMPUTER_MARKER)
+  elsif cpu_off_or_def(brd, PLAYER_MARKER)
+    square = cpu_off_or_def(brd, PLAYER_MARKER)
+  elsif cpu_off_or_def(brd, COMPUTER_MARKER)
+    square = cpu_off_or_def(brd, COMPUTER_MARKER)
+  end
+  square
+end
+
+def find_at_risk_square(line, board, marker)
+  if board.values_at(*line).count(marker) == 2
+    board.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
+  end
 end
