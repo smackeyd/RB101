@@ -8,6 +8,6 @@ arr = [
 ]
 
 p arr[0]
-p arr[1][0][:three] # => 6, the value for the hash key :three
+p arr[1][0][:three] # => 6, the VALUE for the hash KEY :three
 p arr[2]
 p arr[3]

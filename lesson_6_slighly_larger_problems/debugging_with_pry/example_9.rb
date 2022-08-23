@@ -1,15 +1,16 @@
-# require "pry"
+require "pry"
 
 =begin
-Write a method that given an array of integers, returns a new array containing only odd numbers 
-that are less than or equal to 15 or multiples of 3 
+Write a method that given an array of integers, returns a new array containing only odd numbers
+that are less than or equal to 15 or multiples of 3
 =end
 
 def select_nums(arr)
   new_arr = []
   arr.each do |num|
-    # binding.pry 
-    new_arr << num if num.odd? && (num <= 15 || num % 3 == 0)
+    # binding.pry
+    # puts num.odd? && num <= 15 || num % 3 == 0
+    new_arr << num if num.odd? && num <= 15 || num % 3 == 0
   end
   new_arr
 end

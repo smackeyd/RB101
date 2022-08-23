@@ -1,0 +1,1 @@
+# IN IRB: (1..5).map { |num| num }

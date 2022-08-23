@@ -24,11 +24,7 @@ prompt("Welcome to Calculator! Enter your name:")
 name = ''
 loop do
   name = Kernel.gets().chomp()
-  if name.empty?()
-    prompt("Make sure to use a valid name.")
-  else
-    break
-  end
+  name.empty?() ? prompt("Make sure to use a valid name.") : break
 end
 
 prompt("Hi, #{name}!") # prompted here so we do not display to user every time
@@ -39,7 +35,6 @@ loop do # MAIN LOOP
   loop do
     prompt("Please enter your first number:")
     number1 = Kernel.gets().chomp()
-
     if valid_number?(number1)
       break
     else
@@ -64,7 +59,7 @@ loop do # MAIN LOOP
     1) add
     2) subtract
     3) multiply
-    4) divide 
+    4) divide
    MSG
 
   prompt(operator_prompt)

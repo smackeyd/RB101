@@ -14,6 +14,7 @@ todo_lists = [
 
 p todo_lists[0][:todos]
 p todo_lists[0][:todos][2]
-
-todo_lists[0][:todos][2][:name] = "Orange Juice"
 p todo_lists[0][:todos][2][:name]
+
+# todo_lists[0][:todos][2][:name] = "Orange Juice"
+# p todo_lists[0][:todos][2][:name]

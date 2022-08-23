@@ -74,12 +74,7 @@ def choosing_first_turn
     break if answer.start_with?('y') || answer.start_with?('n')
     prompt "Invalid choice. Please enter Y or N."
   end
-
-  if answer == 'y'
-    player_choose_first_turn
-  else
-    random_first_turn
-  end
+  answer == 'y' ? player_choose_first_turn : random_first_turn
 end
 
 def player_choose_first_turn
@@ -129,6 +124,7 @@ end
 def find_at_risk_square(line, board, marker)
   if board.values_at(*line).count(marker) == 2
     board.select { |k, v| line.include?(k) && v == INITIAL_MARKER }.keys.first
+    binding.pry
   end
 end
 
@@ -145,6 +141,7 @@ def computer_strategy(brd)
   square = nil
   if cpu_off_or_def(brd, PLAYER_MARKER) && cpu_off_or_def(brd, COMPUTER_MARKER)
     square = cpu_off_or_def(brd, COMPUTER_MARKER)
+    # binding.pry
   elsif cpu_off_or_def(brd, PLAYER_MARKER)
     square = cpu_off_or_def(brd, PLAYER_MARKER)
   elsif cpu_off_or_def(brd, COMPUTER_MARKER)
@@ -158,6 +155,7 @@ def computer_marks_square!(brd)
   if !square
     square = empty_squares(brd).include?(5) ? 5 : empty_squares(brd).sample
   end
+  # binding.pry
   brd[square] = COMPUTER_MARKER
 end
 

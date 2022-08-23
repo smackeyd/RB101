@@ -4,4 +4,4 @@ total = array.inject(5) do |sum, element|
   sum + element
 end
 
-p total 
+p total

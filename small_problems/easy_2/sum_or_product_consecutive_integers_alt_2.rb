@@ -1,16 +1,28 @@
+VALID_OPERATIONS = %w(s p)
+
 def compute_sum(number)
-  total = (1..number).inject(:+)
+  (1..number).inject(:+)
 end
 
 def compute_product(number)
-  total = (1..number).inject(:*)
+  (1..number).inject(:*)
 end
 
-puts ">> Please enter an integer greater than 0"
-number = gets.chomp.to_i
+number = ""
+loop do
+  puts ">> Please enter an integer greater than 0"
+  number = gets.chomp.strip.to_i
+  break if number > 0
+  puts "Invalid input!"
+end
 
-puts ">> Enter 's' to compute the sum, 'p' to compute the product."
-operation = gets.chomp
+operation = ""
+loop do
+  puts ">> Enter 's' to compute the sum, 'p' to compute the product."
+  operation = gets.chomp.strip.downcase
+  break if VALID_OPERATIONS.include?(operation)
+  puts "Invalid input!"
+end
 
 if operation == 's'
   sum = compute_sum(number)

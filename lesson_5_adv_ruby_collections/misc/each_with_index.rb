@@ -3,7 +3,7 @@ encrypted_sentence = ""
 
 arr.each_with_index do |el, idx|
   encrypted_sentence += el
-  encrypted_sentence += "-" if (idx < arr.size - 1)
+  encrypted_sentence += "-" if (idx < arr.size - 1) # 3
 end
 
 puts encrypted_sentence # outputs my-first-encrypted-sentence

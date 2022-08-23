@@ -63,6 +63,7 @@ loop do # MAIN LOOP
   end
 
   number2 = nil
+
   loop do
     prompt("Please enter your second number:")
     number2 = Kernel.gets().chomp()
@@ -79,7 +80,7 @@ loop do # MAIN LOOP
     1) add
     2) subtract
     3) multiply
-    4) divide 
+    4) divide
   MSG
 
   prompt(operator_prompt)

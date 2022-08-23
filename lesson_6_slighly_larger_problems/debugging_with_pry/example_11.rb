@@ -3,10 +3,10 @@ Write a method that takes as an argument an array of integers and returns a new 
 =end
 
 # require "pry"
-# require "pry-byebug"
+require "pry-byebug"
 
 def double_num(num)
-  num * 2
+  num * 2 # ORIGINAL ERROR: num + 2
 end
 
 def double_evens(arr)

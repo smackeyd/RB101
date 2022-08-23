@@ -10,8 +10,8 @@ order_data = [
 customer_orders = {}
 
 order_data.each do |hash|
-  if customer_orders.key?(hash[:customer_id]) # if the key already exists 
-    customer_orders[hash[:customer_id]][:orders] << { # appends new order hash into orders array
+  if customer_orders.key?(hash[:customer_id]) # if the key already exists
+    customer_orders[hash[:customer_id]][:orders] << { # appends customer_orders hash into orders array
       order_fulfilled: hash[:order_fulfilled],
       order_value: hash[:order_value]
     }
@@ -29,6 +29,5 @@ order_data.each do |hash|
   end
 end
 
-p customer_orders
 customer_orders = customer_orders.values
 p customer_orders

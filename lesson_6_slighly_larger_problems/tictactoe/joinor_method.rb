@@ -1,3 +1,5 @@
+# require "pry"
+
 def joinor(arr, delimiter=', ', word='or')
   case arr.size
   when 0 then ''
@@ -5,6 +7,7 @@ def joinor(arr, delimiter=', ', word='or')
   when 2 then arr.join(" #{word} ")
   else
     arr[-1] = "#{word} #{arr.last}"
+    # binding.pry
     arr.join(delimiter)
   end
 end

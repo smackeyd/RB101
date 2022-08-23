@@ -1,5 +1,5 @@
 def is_odd?(number)
-  number % 2 == 1
+  number % 2 == 1 # ALT number.odd?
 end
 
 puts is_odd?(2)    # => false

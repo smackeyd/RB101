@@ -1,6 +1,6 @@
 def average(numbers)
   sum = numbers.reduce { |sum, number| sum + number }
-  sum / numbers.count
+  sum / numbers.size
 end
 
 puts average([1, 6]) == 3 # integer division: (1 + 6) / 2 -> 3

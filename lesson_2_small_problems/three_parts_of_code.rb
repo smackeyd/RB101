@@ -1,6 +1,7 @@
 name = ''
 
 puts "Enter your name: "
+
 loop do
   name = gets.chomp
   break unless name.empty?

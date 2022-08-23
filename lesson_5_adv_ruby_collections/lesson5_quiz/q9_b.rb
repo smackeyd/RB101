@@ -1,3 +1,4 @@
+require 'pry'
 customer_orders = [
   {
     customer_id: 12,
@@ -19,13 +20,12 @@ customer_orders = [
   # rest of data...
 ]
 
-p customer_orders[0][:orders][0][:order_value]
+# p customer_orders[0][:orders][0][:order_value]
 
 all_orders = customer_orders.map do |customer_data|
   order_value = customer_data[:orders].inject(0) do |total, order_data|
     total + order_data[:order_value]
   end
-
   {
     customer_id: customer_data[:customer_id],
     customer_name: customer_data[:customer_name],
@@ -39,7 +39,7 @@ fulfilled_orders = customer_orders.map do |customer_data|
   order_value = customer_data[:orders].inject(0) do |total, order_data|
     order_data[:order_fulfilled] == true ? total + order_data[:order_value] : total
   end
-  
+
   {
     customer_id: customer_data[:customer_id],
     customer_name: customer_data[:customer_name],
